@@ -1,0 +1,8 @@
+{
+  "name": "Polyglot AI",
+  "description": "A global AI assistant created by Arif Hasan from Bangladesh. It understands all languages and solves various problems like ChatGPT.",
+  "requestFramePermissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

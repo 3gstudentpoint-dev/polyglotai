@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  .prose h1 { @apply text-2xl font-bold mb-4 text-zinc-100; }
+  .prose h2 { @apply text-xl font-bold mb-3 text-zinc-100; }
+  .prose h3 { @apply text-lg font-bold mb-2 text-zinc-100; }
+  .prose p { @apply mb-4 last:mb-0 text-zinc-300 leading-7; }
+  .prose ul { @apply list-disc pl-6 mb-4 text-zinc-300 space-y-2; }
+  .prose ol { @apply list-decimal pl-6 mb-4 text-zinc-300 space-y-2; }
+  .prose code { @apply bg-zinc-800/50 px-1.5 py-0.5 rounded text-sm font-mono text-zinc-200; }
+  .prose pre { @apply bg-black text-zinc-50 p-4 rounded-xl my-5 overflow-x-auto border border-zinc-800/50 shadow-2xl; }
+  .prose pre code { @apply bg-transparent p-0 text-zinc-50 text-sm; }
+  .prose blockquote { @apply border-l-2 border-zinc-700 pl-4 italic my-4 text-zinc-400; }
+  .prose a { @apply text-emerald-500 hover:underline; }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .bg-chat-dark {
+    background-color: #212121;
+  }
+  
+  .bg-sidebar-dark {
+    background-color: #171717;
+  }
+
+  .bg-block-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  @keyframes gemini-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .gemini-loader {
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(to right, #4285f4, #34a853, #fbbc05, #ea4335, #4285f4);
+    background-size: 200% 100%;
+    animation: gemini-gradient 1.5s linear infinite;
+    box-shadow: 0 0 20px rgba(66, 133, 244, 0.6), 0 0 10px rgba(52, 168, 83, 0.4);
+    border-radius: 10px;
+  }
+
+  .chat-input-gradient-border {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .chat-input-gradient-border {
+    position: relative;
+    border-radius: 28px;
+    padding: 1.5px;
+    background: transparent;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    z-index: 1;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .chat-input-gradient-border:focus-within {
+    box-shadow: 0 0 20px rgba(66, 133, 244, 0.15);
+  }
+
+  .chat-input-gradient-border::before {
+    content: '';
+    position: absolute;
+    top: -200%;
+    left: -100%;
+    width: 300%;
+    height: 500%;
+    background: conic-gradient(
+      from 0deg,
+      #4285f4,
+      #34a853,
+      #fbbc05,
+      #ea4335,
+      #4285f4
+    );
+    animation: rotate-gradient 10s linear infinite;
+    z-index: -2;
+    filter: blur(4px);
+    transition: animation-duration 0.5s ease;
+  }
+
+  .chat-input-gradient-border.is-typing::before {
+    animation-duration: 3s;
+  }
+
+  .chat-input-gradient-border.is-typing {
+    box-shadow: 0 0 30px rgba(66, 133, 244, 0.2);
+  }
+
+  .chat-input-gradient-border::after {
+    content: '';
+    position: absolute;
+    inset: 1.5px;
+    background: #2f2f2f;
+    border-radius: 27px;
+    z-index: -1;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
